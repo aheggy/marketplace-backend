@@ -1,6 +1,7 @@
 // DEPENDENCIE
 const express = require("express");
 const cors = require("cors");
+const productsController = require("./controllers/productsController.js")
 
 //CONSTIGRATION
 const app = express();
@@ -14,9 +15,11 @@ app.get("/", (req, res) => {
     res.status(200).send("Welcome to Marketplace app")
 })
 
+app.use("/products", productsController)
+
 //ERROR 404
 app.get("*", (req, res) => {
-    res.status(404).send("Sorry, page not found!")
+    res.status(404).send({data: "Sorry, page not found!"})
 })
 
 module.exports = app;
