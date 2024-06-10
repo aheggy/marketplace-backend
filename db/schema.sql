@@ -13,5 +13,5 @@ CREATE TABLE products (
     price DECIMAL NOT NULL,
     image_url TEXT NOT NULL,
     last_updated TIMESTAMP,
-    is_favorite BOOLEAN NOT NULL
+    is_new BOOLEAN NOT NULL
 );

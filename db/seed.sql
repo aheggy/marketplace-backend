@@ -1,4 +1,4 @@
-INSERT INTO products (product_name, product_category, price, image_url, is_favorite) VALUES 
+INSERT INTO products (product_name, product_category, price, image_url, is_new) VALUES 
     ('iPhone 14', 'Electronics', 999.99, 'https://example.com/iphone14.jpg', true),
     ('Galaxy S22', 'Electronics', 899.99, 'https://example.com/galaxys22.jpg', false),
     ('Sony WH-1000XM4', 'Electronics', 349.99, 'https://example.com/sonyheadphones.jpg', true),
