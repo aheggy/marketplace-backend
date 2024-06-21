@@ -39,9 +39,14 @@ productsController.post("/", async(request, response) => {
 })
 
 productsController.put("/:id", async(request, response) =>{
+    const {id } = request.params
+    const product = request.body;
     try{
-        const {id } = request.params
-        const product = request.body;
+        const existingProduct = await getOneProduct(id)
+        if (!existingProduct) {
+            response.status.apply(404).json({error: 'Product is not found'})
+            return
+        }
         const updatedProduct = await updateProduct(id, product)
         response.status(200).json({data: updatedProduct})
     }catch (err){
@@ -50,8 +55,14 @@ productsController.put("/:id", async(request, response) =>{
 })
 
 productsController.delete("/:id", async(request, response) => {
+    const {id} = request.params
+
     try {
-        const {id} = request.params
+        const existingProduct = await getOneProduct(id)
+        if(!existingProduct){
+            response.status(404).json({error: 'product not found'})
+            return
+        }
         const deletedProduct = await deleteProduct(id)
         response.status(200).json({data: deletedProduct})
     } catch (err) {
